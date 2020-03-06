@@ -7,11 +7,11 @@ def menu():
     print('6. Exit')
     print("\n")
     print("Current number of entries:")
-    print(len(numbers.keys()))
+    print(len(grades.keys()))
     print("________________________________")
     print()
 
-numbers = {}
+grades = {"Rabin" : 99, "Rabine" : 98, "Rabinne" : 97}
 ch = 0
 while ch != 6:
     menu()
@@ -19,21 +19,21 @@ while ch != 6:
     
     if ch == 1:
         print("Grades:")
-        for x in numbers.keys():
-          print("Student Name: ", x, "\tGrade:", numbers[x])
+        for x in grades.keys():
+          print("Student Name: ", x, "\tGrade:", grades[x])
           print("\n")
 
     elif ch == 2:
         print("Add the student name and grade: ")
         name = input("Student name: ")
-        phone = input("Grade of student: ")
-        numbers[name] = phone 
+        gr = input("Grade of student: ")
+        grades[name] = gr 
 
     elif ch == 3:
         print("Update records")
         print("Grades:")
-        for x in numbers.keys():
-          print("Student Name: ", x, "\tGrade:", numbers[x])
+        for x in grades.keys():
+          print("Student Name: ", x, "\tGrade:", grades[x])
           print("\n")
         
         name = input("Student name to be updated: ")
@@ -41,7 +41,7 @@ while ch != 6:
 
         newRecord = {name:grade}
 
-        numbers.update(newRecord)
+        grades.update(newRecord)
 
 
     elif ch == 4:
@@ -51,12 +51,12 @@ while ch != 6:
         if delCh == 1:
             print("Remove records")
             name = input("Name: ")
-            if name in numbers:
-                del numbers[name]
+            if name in grades:
+                del grades[name]
             else:
                 print(name, "was not found")
         elif delCh == 2:
-            numbers.clear()
+            grades.clear()
             print("All records deleted!")
 
     elif ch == 5:
@@ -65,16 +65,16 @@ while ch != 6:
         selCh = int(input("Please enter your choice: "))
         if selCh == 1:
             entryName = input("Enter the name of the student you want to search: ")
-            if entryName in numbers:
+            if entryName in grades:
                 print("Searched name is found in the database!")
             else:  
                 print(entryName + " is not found!")
         elif selCh == 2:
             try:
                 enterGrade = input("Enter the grade you want to search: ")
-                key = list(numbers.keys())
-                value = list(numbers.values())
-                if numbers[key[value.index(enterGrade)]] == enterGrade:
+                key = list(grades.keys())
+                value = list(grades.values())
+                if grades[key[value.index(enterGrade)]] == enterGrade:
                     print("The grade is found!")
                 else:
                     print("Grade is not found!")
